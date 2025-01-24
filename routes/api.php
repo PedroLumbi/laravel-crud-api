@@ -22,22 +22,14 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 */
 
-Route::get('students', function () {
-    return "Get student List";
-});
+Route::get('students', [studentController::class, 'index']);
 
-Route::get('students/{id}', function ($id) {
-    return "Get a student with ID: " . $id;
-});
+Route::get('students/{id}', [studentController::class, 'show']);
 
-Route::post('students/{id}', function ($id) {
-    return "Create a student with ID: $id";
-});
+Route::post('students', [studentController::class, 'store']);
 
-Route::put('students/{id}', function ($id) {
-    return "Updating student with ID: $id";
-});
+Route::put('students/{id}', [studentController::class, 'update']);
 
-Route::delete('students/{id}', function ($id) {
-    return "Deleting student with ID: $id";
-});
+Route::patch('students/{id}', [studentController::class, 'updatePartial']);
+
+Route::delete('students/{id}', [studentController::class, 'destroy']);
